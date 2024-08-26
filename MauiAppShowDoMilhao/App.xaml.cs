@@ -21,7 +21,7 @@ namespace MauiAppShowDoMilhao
                 new Pergunta
                 {
                     Id = 2,
-                    Enunciado = "Qual é o nome dado ao estado da água em forma de gelo?",
+                    Enunciado = "Qual era o apelido da cantora Elis Regina?",
                     Alternativas = new()
                     {
                         new Alternativa { Correta = false, Descricao= "Gauchinha"},
@@ -33,7 +33,7 @@ namespace MauiAppShowDoMilhao
                 new Pergunta
                 {
                     Id = 3,
-                    Enunciado = "Qual era o apelido da cantora Elis Regina?",
+                    Enunciado = "Qual é o nome dado ao estado da água em forma de gelo?",
                     Alternativas = new()
                     {
                         new Alternativa { Correta = false, Descricao= "LÍQUIDO"},
@@ -827,7 +827,7 @@ namespace MauiAppShowDoMilhao
         {
             Random r = new Random();
 
-            int sorteado = r.Next(21, 40);
+            int sorteado = r.Next(21, 41);
 
             return perguntas_medias[sorteado];
         }
@@ -835,7 +835,7 @@ namespace MauiAppShowDoMilhao
         {
             Random r = new Random();
 
-            int sorteado = r.Next(41, 60);
+            int sorteado = r.Next(41, 61);
 
             return perguntas_dificeis[sorteado];
         }

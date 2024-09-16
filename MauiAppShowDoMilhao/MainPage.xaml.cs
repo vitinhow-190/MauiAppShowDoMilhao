@@ -1,17 +1,23 @@
 ﻿using MauiAppShowDoMilhao.Models;
+using Metal;
 
 namespace MauiAppShowDoMilhao
 {
     public partial class MainPage : ContentPage
     {
 
-        double premio = 0;
-        int pergunta_count = 0;
+        double premio = 1000;
+        int pergunta_count = 1;
 
         public MainPage()
         {
-            
             InitializeComponent();
+
+            this.BindingContext = App.getRandomPerguntaFacil;
+
+            lbl_nivel.Text = "Fácil";
+            lbl_premio.Text = premio.ToString("C");
+            lbl_pergunta_numero.Text = pergunta_count.ToString();
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -60,7 +66,8 @@ namespace MauiAppShowDoMilhao
             if (acertou)
             {
                 await DisplayAlert("ACERTOU!!", resp, "OK");
-                this.BindingContext = App.getRandomPerguntaFinal;
+                pergunta_count++;
+                avanca_pergunta();
             }else
             {
                 await DisplayAlert("ERROU!!", "Você Perdeu", "OK");
@@ -74,19 +81,25 @@ namespace MauiAppShowDoMilhao
             {
                 premio = premio + 1000;
                 this.BindingContext = App.getRandomPerguntaFacil();
+                lbl_nivel.Text = "Fácil";
             }
 
             if (pergunta_count > 5 && pergunta_count <= 10)
             {
                 premio = premio + 10000;
                 this.BindingContext = App.getRandomPerguntaMedia();
+                lbl_nivel.Text = "Média";
             }
 
             if (pergunta_count > 5 && pergunta_count <= 10)
             {
                 premio = premio + 100000;
                 this.BindingContext = App.getRandomPerguntaDificil();
+                lbl_nivel.Text = "Dificil";
             }
+
+            lbl_premio.Text = premio.ToString();
+            lbl_pergunta_numero.Text = pergunta_count.ToString();
         }
     }
 

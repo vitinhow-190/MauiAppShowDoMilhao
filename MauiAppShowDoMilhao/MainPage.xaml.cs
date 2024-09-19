@@ -90,10 +90,16 @@ namespace MauiAppShowDoMilhao
                     track = "500000.wav";
                 break;
 
+                case 16:
+                    track = "1000000";
+                break;
+
             }
 
             AudioManager.Current.CreatePlayer(FileSystem.OpenAppPackageFileAsync(track).Result).Play();
         }
+
+        
 
         private void Button_Clicked(object sender, EventArgs e)
         {
